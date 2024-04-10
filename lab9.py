@@ -37,7 +37,17 @@ def encode_password(password):
     return encoded
 
 def decode_password(encoded):
-    pass
+    # Code explained:
+    # encoded_password_list is a list of ints
+    # First, we map the above list (ie, iterate through each element in the list and modify them)
+    # by setting each element to |x - 3| (makes it an absolute value)
+    # Now this new list of ints is then converted to a single int
+    # by using a mixture of int(), join(), and list comprehension
+    encoded_password_list = [int(x) for x in str(encoded)]
+    return int(
+        "".join(str(i) for i in map(lambda x: abs(x - 3), encoded_password_list))
+    )
+
 
 if __name__ == "__main__":
     main()
